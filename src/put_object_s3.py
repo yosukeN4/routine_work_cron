@@ -10,6 +10,8 @@ def show_s3_ls_object():
         text=True,
     ).stdout
     print(output_str)
+    return output_str
 
 if __name__ == '__main__':
-    show_s3_ls_object()
+    hoge = show_s3_ls_object()
+    print(hoge)
