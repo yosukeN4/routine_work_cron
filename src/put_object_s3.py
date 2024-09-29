@@ -9,7 +9,6 @@ def show_s3_ls_object():
         capture_output=True,
         text=True,
     ).stdout
-    print(output_str)
     return output_str
 
 if __name__ == '__main__':
