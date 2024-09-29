@@ -12,4 +12,4 @@ def show_s3_ls_object():
     print(output_str)
 
 if __name__ == '__main__':
-    put_s3_object()
+    show_s3_ls_object()
