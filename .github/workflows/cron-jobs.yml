@@ -4,7 +4,7 @@ name: Schedule Action
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '*/2 * * * *' #invoke every 10 min.
+    - cron: '*/30 * * * *' #invoke every 10 min.
   # workflow_dispatch:
   #   inputs:
   #     dev:
