@@ -4,14 +4,12 @@ name: Schedule Action
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '*/10 * * * *' #invoke every 15 min.
+    - cron: '*/10 * * * *' #invoke every 10 min.
   workflow_dispatch:
     inputs:
       environment:
         type: environment
-        description: Switch Environment
-        required: false
-        default: dev
+        required: true
 
 jobs:
   Run:
@@ -32,5 +30,5 @@ jobs:
           pip install -r tests/requirements.txt
 
       - name: put object to s3
-        run: python -m .src/put_object_s3.py
+        run: python .src/put_object_s3.py
       
