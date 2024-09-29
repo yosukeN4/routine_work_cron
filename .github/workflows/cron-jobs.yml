@@ -4,7 +4,7 @@ name: Schedule Action
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '*/30 * * * *' #invoke every 10 min.
+    - cron: '*/60 * * * *' #invoke every 10 min.
   # workflow_dispatch:
   #   inputs:
   #     dev:
@@ -25,8 +25,8 @@ env:
 jobs:
   Run:
     runs-on: ubuntu-latest
-    # environment: ${{ inputs.dev }}
-    environment: dev
+    environment: ${{ inputs.dev }}
+    # environment: dev
     permissions:
       id-token: write
       contents: read
