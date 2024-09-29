@@ -5,19 +5,22 @@ name: Schedule Action
 on:
   schedule:
     - cron: '*/3 * * * *' #invoke every 10 min.
-  # workflow_dispatch:
-  #   inputs:
-  #     dev:
-  #       type: environment
-  #       required: false
-  #       default: dev
-  #     prod:
-  #       type: environment
-  #       required: false
+  workflow_dispatch:
+    inputs:
+      dev:
+        type: environment
+        required: false
+        default: dev
+      prod:
+        type: environment
+        required: false
 
 permissions:
   id-token: write # required for cron scheduled action
   contents: read
+
+env:
+  AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/cron-role
 
 jobs:
   Run:
@@ -34,11 +37,17 @@ jobs:
           python-version: "3.9"
           cache: pip
 
+      - name: Debug AWS Credentials
+        run: |
+          echo "access_key: ${{var.AWS_ACCESS_KEY_ID}}"
+          echo "secret_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}"
+
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{vars.AWS_ACCESS_KEY_ID}}
-          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          # aws-access-key-id: ${{vars.AWS_ACCESS_KEY_ID}}
+          # aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws-region: ap-northeast-1
+          role-to-assume: ${{ env.AWS_ROLE_ARN}}
 
       - name: Install modules by requirements
         run: |
