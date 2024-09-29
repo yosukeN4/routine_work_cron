@@ -4,11 +4,11 @@ name: Schedule Action
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '*/15 * * * *' #invoke every 15 min.
+    - cron: '*/10 * * * *' #invoke every 15 min.
 
 
 jobs:
-  Echo:
+  Run:
     runs-on: ubuntu-latest
     steps:
       - name: cmd to exec
