@@ -3,5 +3,11 @@ import boto3
 
 import subprocess
 
+
 def put_s3_object():
-    subprocess.call(f'aws s3 ls')
+    output_str = subprocess.call(
+        f"aws s3 ls",
+        capture_output=True,
+        text=True,
+    ).stdout
+    print(output_str)
