@@ -1,0 +1,26 @@
+# This is a basic workflow to help you get started with Actions
+name: Bayashi portfolio
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        description: Switch Environment
+        required: false
+        default: dev
+  push:
+    branches: ["master"]
+
+
+jobs:
+  Echo:
+    runs-on: ubuntu-latest
+    environment: dev # dev環境のEnvironmentsを利用する
+    steps:
+      - name: Echo Secrets
+        run: echo ${{ secrets.AWS_SECRET_ACCESS_KEY }} # devのEnvironmentsで保存したSecretのNAMEが取得できる
+      - name: Echo Variables
+        run: echo ${{ vars.AWS_ACCESS_KEY_ID }}
