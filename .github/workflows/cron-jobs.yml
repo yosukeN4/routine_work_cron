@@ -39,7 +39,7 @@ jobs:
 
       - name: Debug AWS Credentials
         run: |
-          echo "access_key: ${{var.AWS_ACCESS_KEY_ID}}"
+          echo "access_key: ${{vars.AWS_ACCESS_KEY_ID}}"
           echo "secret_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}"
 
       - uses: aws-actions/configure-aws-credentials@v4
