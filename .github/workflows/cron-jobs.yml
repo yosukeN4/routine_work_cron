@@ -10,6 +10,10 @@ on:
       dev:
         type: environment
         required: true
+        default: dev
+      prod:
+        type: environment
+        required: true
 
 jobs:
   Run:
@@ -28,9 +32,6 @@ jobs:
           aws-access-key-id: ${{vars.AWS_ACCESS_KEY_ID}}
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws-region: ap-northeast-1
-
-      - name: check aws cli version
-        run: aws --version
 
       - name: Install modules by requirements
         run: |
