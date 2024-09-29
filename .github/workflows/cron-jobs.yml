@@ -5,15 +5,15 @@ name: Schedule Action
 on:
   schedule:
     - cron: '*/3 * * * *' #invoke every 10 min.
-  workflow_dispatch:
-    inputs:
-      dev:
-        type: environment
-        required: false
-        default: dev
-      prod:
-        type: environment
-        required: false
+  # workflow_dispatch:
+  #   inputs:
+  #     dev:
+  #       type: environment
+  #       required: false
+  #       default: dev
+  #     prod:
+  #       type: environment
+  #       required: false
 
 permissions:
   id-token: write # required for cron scheduled action
