@@ -7,14 +7,15 @@ on:
     - cron: '*/10 * * * *' #invoke every 10 min.
   workflow_dispatch:
     inputs:
-      dev:
+      env-name:
         type: environment
-        required: true
+        required: false
+        default: dev
 
 jobs:
   Run:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.dev}}
+    environment: ${{ inputs.env-nave }}
     env:
       aws-access-key-id: ${{ vars.AWS_ACCESS_KEY_ID }}
       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
