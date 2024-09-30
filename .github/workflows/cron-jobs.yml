@@ -26,6 +26,9 @@ jobs:
   Run:
     runs-on: ubuntu-latest
     environment: dev
+    permissions:
+      id-token: write
+      contents: read
     needs: []
     steps:      
       - uses: actions/checkout@v4
